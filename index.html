@@ -3,12 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Todo | Built with Vue</title>
-
-  <style>
-    .complete {
-      text-decoration: line-through;
-    }
-  </style>
 </head>
 <body>
   
@@ -26,7 +20,7 @@
       <tbody>
         <tr v-for="todo in todos">
           <td><input type="checkbox" v-model=todo.complete></td>
-          <td><input v-bind:class="{complete: todo.complete}" v-on:keyup="(updateTodo(todo))" type="text" v-model="todo.name"></td>
+          <td><input v-bind:disabled="todo.complete" v-on:keyup="(updateTodo(todo))" type="text" v-model="todo.name"></td>
           <td><button v-on:click="removeTodo(todo)">Delete</button></td>
         </tr>
       </tbody>
