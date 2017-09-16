@@ -2,13 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>To do | Built with Vue</title>
+  <title>Todo | Built with Vue</title>
 
-  <script src="https://unpkg.com/vue"></script>
+  <style>
+    .complete {
+      text-decoration: line-through;
+    }
+  </style>
 </head>
 <body>
   
-  
+  <div id="app">
+    <h1>Todo List</h1>
+    <form v-on:submit.prevent="addTodo">
+      <h3>Add an item</h3>
+      <input type="text" v-model="newTodo.name">
+      <input type="submit" value="Add">
+    </form>
+    
+    <br><br>
 
+    <table>
+      <tbody>
+        <tr v-for="todo in todos">
+          <td><input type="checkbox" v-model=todo.complete></td>
+          <td><span v-bind:class="{complete: todo.complete}">{{ todo.name }}</span></td>
+          <td><button v-on:click="removeTodo(todo)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="vue.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
