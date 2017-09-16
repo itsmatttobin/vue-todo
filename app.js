@@ -21,6 +21,12 @@ const app = new Vue({
     },
     removeTodo(todo) {
       this.todos.splice(this.todos.indexOf(todo), 1)
+    },
+    updateTodo(todo) {
+      // Remove todo if the name is empty
+      if(todo.name == '') {
+        this.removeTodo(todo);
+      }
     }
   },
   watch: {
