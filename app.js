@@ -3,6 +3,7 @@ const app = new Vue({
   data: {
     // Get todos from localstorage or create empty array
     todos: JSON.parse(localStorage.getItem('vue-todos')) || [],
+    // Temporarily store new todo info
     newTodo: {
       name: ''
     }
@@ -14,8 +15,9 @@ const app = new Vue({
         this.todos.push({
           name: this.newTodo.name,
           complete: false
-        });       
+        });
         
+        // Reset new todo name
         this.newTodo.name = '';
       }
     },
@@ -32,7 +34,7 @@ const app = new Vue({
   watch: {
     // Watch for changes in todos
     todos: {
-      handler: function(todos) {
+      handler(todos) {
         // Save todos to localstorage
         window.localStorage.setItem('vue-todos', JSON.stringify(todos));
       },
